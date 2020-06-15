@@ -13,5 +13,4 @@ func main() {
 	uptime, average := uptime_and_average()
 	fmt.Println(uptime)
 	fmt.Println(average)
-
 }
