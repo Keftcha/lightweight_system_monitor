@@ -20,11 +20,17 @@ func uptimeAndAverage() (string, string) {
 		log.Fatal(err)
 	}
 
+	return formatUptimeAndAverage(output.String(), runtime.NumCPU())
+}
+
+func formatUptimeAndAverage(output string, nbCPU int) (string, string) {
+	// Given the ouput of the `uptime` linux command, we format it
+
 	// Separate infos in the `uptime` command
-	infos := strings.Split(output.String(), ",  ")
+	infos := strings.Split(output, ",  ")
 
 	// Get the uptime
-	uptime := strings.Split(infos[0], " up ")[1]
+	uptime := strings.Trim(strings.Split(infos[0], " up ")[1], " ")
 	uptime = fmt.Sprintf("Uptime: %s", uptime)
 
 	// Get the load average
@@ -46,7 +52,7 @@ func uptimeAndAverage() (string, string) {
 		// Choose color and convert in string
 		color := defineColor(
 			0,
-			float64(runtime.NumCPU()),
+			float64(nbCPU),
 			value,
 		)
 
@@ -60,8 +66,8 @@ func uptimeAndAverage() (string, string) {
 	avg_1min, avg_5min, avg_15min := formated_average[0], formated_average[1], formated_average[2]
 
 	average := fmt.Sprintf(
-		"%d CPU(s) | Load average : %s, %s, %s",
-		runtime.NumCPU(),
+		"%d CPU(s) | Load average: %s, %s, %s",
+		nbCPU,
 		avg_1min,
 		avg_5min,
 		avg_15min,
