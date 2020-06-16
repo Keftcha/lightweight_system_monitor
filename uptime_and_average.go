@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func uptime_and_average() (string, string) {
+func uptimeAndAverage() (string, string) {
 	// Load average and uptime
 	cmd := exec.Command("uptime")
 	var output bytes.Buffer // output of the command
@@ -44,7 +44,7 @@ func uptime_and_average() (string, string) {
 			log.Fatal(err)
 		}
 		// Choose color and convert in string
-		color := define_color(
+		color := defineColor(
 			0,
 			float64(runtime.NumCPU()),
 			value,

@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-func define_color(min float64, max float64, value float64) string {
+func defineColor(min float64, max float64, value float64) string {
 	// Choose value, purple is lower, red is higher
 
 	// Define colors
