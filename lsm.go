@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -13,12 +14,10 @@ func main() {
 	// Uptime
 	fmt.Printf("Uptime: %s\n", formatedUptime())
 
-	fmt.Println()
-	// To remove
-	uptime, average := uptimeAndAverage()
-	fmt.Println(uptime)
-	fmt.Println(average)
-
-	fmt.Println()
-
+	// Load average
+	fmt.Printf(
+		"%d CPU(s) | Load average: %s\n",
+		runtime.NumCPU(),
+		formatedLoads(runtime.NumCPU()),
+	)
 }
