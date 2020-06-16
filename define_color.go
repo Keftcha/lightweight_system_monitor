@@ -9,12 +9,12 @@ func defineColor(min float64, max float64, value float64) string {
 
 	// Define colors
 	colors := []string{
-		"\033[35m", // Purple
-		"\033[34m", // Blue
-		"\033[36m", // Cyan
-		"\033[32m", // Green
-		"\033[33m", // Yellow
-		"\033[31m", // Red
+		"\033[95m", // Purple
+		"\033[94m", // Blue
+		"\033[96m", // Cyan
+		"\033[92m", // Green
+		"\033[93m", // Yellow
+		"\033[91m", // Red
 	}
 
 	// Move our interval on [0:`max` - `min`] instead of [`min`:`max`]
