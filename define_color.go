@@ -23,7 +23,7 @@ func defineColor(min float64, max float64, value float64) string {
 	value += delta
 
 	// Cross product to move our interval on [1:6] because we have 6 colors
-	color_index := int(math.Min(math.Max((6*value/max)-1, 0), 5))
+	color_index := int(math.Min(math.Max((6*value/max), 0), 5))
 
 	return colors[color_index]
 }
