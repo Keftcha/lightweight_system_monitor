@@ -38,7 +38,7 @@ func formatedUptime() string {
 	}
 
 	// Formated uptime
-	s_uptime := fmt.Sprintf("%0d:%0d", hours, minutes)
+	s_uptime := fmt.Sprintf("%01d:%02d", hours, minutes)
 	if days != 0 {
 		s_uptime = fmt.Sprintf("%s %s", s_day, s_uptime)
 	}
