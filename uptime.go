@@ -17,7 +17,7 @@ func uptimeDays() int64 {
 }
 
 func uptimeHours() int64 {
-	return int64((uptime() - uptimeDays()*24) / 60 / 60)
+	return int64((uptime() - uptimeDays()*24*60*60) / 60 / 60)
 }
 
 func uptimeMinutes() int64 {
