@@ -20,4 +20,12 @@ func main() {
 		runtime.NumCPU(),
 		formatedLoads(runtime.NumCPU()),
 	)
+
+	fmt.Println()
+
+	// Memory usage
+	fmt.Println(formatedRam())
+	fmt.Println()
+	fmt.Println(formatedSwap())
+
 }
