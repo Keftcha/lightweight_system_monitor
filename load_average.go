@@ -30,15 +30,15 @@ func formatedLoads(cpus int) string {
 	// Loads values
 	loads := []float64{load1(), load5(), load15()}
 	// Loads string values
-	s_loads := make([]string, 3)
+	sLoads := make([]string, 3)
 
 	for idx, load := range loads {
-		s_loads[idx] = fmt.Sprintf(
+		sLoads[idx] = fmt.Sprintf(
 			"%s%s\033[0m",
 			defineColor(0, float64(cpus), load),
 			strconv.FormatFloat(load, 'f', 2, 64),
 		)
 	}
 
-	return strings.Join(s_loads, ", ")
+	return strings.Join(sLoads, ", ")
 }
