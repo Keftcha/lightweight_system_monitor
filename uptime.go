@@ -30,18 +30,18 @@ func formatedUptime() string {
 	minutes := uptimeMinutes()
 
 	// String day
-	var s_day string
+	var sDay string
 	if days == 1 {
-		s_day = "1 day"
+		sDay = "1 day"
 	} else {
-		s_day = fmt.Sprintf("%d days", days)
+		sDay = fmt.Sprintf("%d days", days)
 	}
 
 	// Formated uptime
-	s_uptime := fmt.Sprintf("%01d:%02d", hours, minutes)
+	sUptime := fmt.Sprintf("%01d:%02d", hours, minutes)
 	if days != 0 {
-		s_uptime = fmt.Sprintf("%s %s", s_day, s_uptime)
+		sUptime = fmt.Sprintf("%s %s", sDay, sUptime)
 	}
 
-	return s_uptime
+	return sUptime
 }

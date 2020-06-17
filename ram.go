@@ -23,7 +23,7 @@ type swap struct {
 	free  uint64
 }
 
-func newRam() ram {
+func newRAM() ram {
 	var info unix.Sysinfo_t
 	unix.Sysinfo(&info)
 
@@ -54,15 +54,15 @@ func chooseUnitIdx(value uint64) int {
 
 	idx := 0
 	for val > 1024 && idx < len(units)-1 {
-		idx += 1
+		idx++
 		val /= 1024
 	}
 
 	return idx
 }
 
-func formatedRam() string {
-	ram := newRam()
+func formatedRAM() string {
+	ram := newRAM()
 
 	legend := fmt.Sprintf(
 		"%20s %11s %11s",

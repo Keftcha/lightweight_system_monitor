@@ -24,7 +24,7 @@ func main() {
 	fmt.Println()
 
 	// Memory usage
-	fmt.Println(formatedRam())
+	fmt.Println(formatedRAM())
 	fmt.Println()
 	fmt.Println(formatedSwap())
 
