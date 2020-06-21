@@ -9,7 +9,7 @@ func uptime() int64 {
 	var info unix.Sysinfo_t
 	unix.Sysinfo(&info)
 
-	return info.Uptime
+	return int64(info.Uptime)
 }
 
 func uptimeDays() int64 {

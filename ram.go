@@ -33,9 +33,9 @@ func newRAM() ram {
 	}
 
 	return ram{
-		total:     info.Totalram,
-		free:      info.Freeram,
-		available: mem.Available,
+		total:     uint64(info.Totalram),
+		free:      uint64(info.Freeram),
+		available: uint64(mem.Available),
 	}
 }
 
@@ -44,8 +44,8 @@ func newSwap() swap {
 	unix.Sysinfo(&info)
 
 	return swap{
-		total: info.Totalswap,
-		free:  info.Freeswap,
+		total: uint64(info.Totalswap),
+		free:  uint64(info.Freeswap),
 	}
 }
 

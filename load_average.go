@@ -11,7 +11,13 @@ func loads() [3]uint64 {
 	var info unix.Sysinfo_t
 	unix.Sysinfo(&info)
 
-	return info.Loads
+    loads := [3]uint64{
+        uint64(info.Loads[0]),
+        uint64(info.Loads[1]),
+        uint64(info.Loads[2]),
+    }
+
+	return loads
 }
 
 func load1() float64 {
