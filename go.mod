@@ -1,4 +1,4 @@
-module github.com/keftcha/lightweight_system_monitor
+module github.com/keftcha/lsm
 
 go 1.14
 

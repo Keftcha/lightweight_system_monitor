@@ -1,4 +1,4 @@
-# Lightweight System Monitor (LSM)
+# LSM (Lightweight System Monitor)
 
 Little command line tool to check some system info
 
@@ -9,7 +9,7 @@ project and compile it (with `go install` or `go build`).
 
 ## How it work ?
 
-By typing `lightweight_system_monitor` you will get that output.
+By typing `lsm` you will get that output.
 
 ```console
 2020-06-17 18:57:57
