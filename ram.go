@@ -80,7 +80,7 @@ func formatedRAM() string {
 		formatUncolored(ram.total),
 		formatColored(0, ram.total, ram.used),
 		formatColored(ram.total, 0, ram.free),
-		formatColored(0, ram.total, ram.available),
+		formatColored(ram.total, 0, ram.available),
 	)
 
 	return fmt.Sprintf("%s\n%s", legend, values)
