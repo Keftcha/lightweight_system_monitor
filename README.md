@@ -29,6 +29,17 @@ Purple, Blue, Cyan, Green, Yellow, Red
 The more you are close to the purple, the more the value is low.
 The more you are close to the red, the more the value is hight.
 
+## Where infos come from ?
+
+The date come from your computer local date using the standard go module time.
+
+The uptime and cpu informations come from
+[this](https://godoc.org/golang.org/x/sys/unix "golang.org/x/sys/unix") module.
+
+The RAM and swap informations comes from the `/proc/meminfo` file with
+[this](https://github.com/Keftcha/meminfo "github.com/Keftcha/meminfo") go
+package.
+
 ## Command line options
 
 - `--date` flag will display the date
