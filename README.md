@@ -12,15 +12,15 @@ project and compile it (with `go install` or `go build`).
 By typing `lsm` you will get that output.
 
 ```console
-2020-06-17 18:57:57
-Uptime: 9:32
-4 CPU(s) | Load average: 1.23, 0.99, 0.90
+2020-06-29 01:09:05
+Uptime: 10:58
+4 CPU(s) | Load average: 0.99, 1.12, 1.22
 
-               Total        Free   Available
-Mem:          7.48Go      1.15Go      4.04Go
+               Total        Used        Free   Available
+Mem:          7.48Go      2.73Go      1.59Go      4.32Go
 
-                Used       Total
-Swap:          0.00o      2.00Go
+               Total        Used        Free
+Swap:         2.00Go     75.84Mo      1.93Go
 ```
 
 Some values are colored. The colors are:  
