@@ -6,46 +6,49 @@ import (
 	"math"
 	"strconv"
 
-	"github.com/Cloud-Foundations/Dominator/lib/meminfo"
-	"golang.org/x/sys/unix"
+	"github.com/keftcha/meminfo"
 )
 
 var units []string = []string{"o", "Ko", "Mo", "Go", "To", "Po", "Eo", "Zo", "Yo"}
 
 type ram struct {
 	total     uint64
+	used      uint64
 	free      uint64
 	available uint64
 }
 
 type swap struct {
 	total uint64
+	used  uint64
 	free  uint64
 }
 
 func newRAM() ram {
-	var info unix.Sysinfo_t
-	unix.Sysinfo(&info)
-
-	mem, err := meminfo.GetMemInfo()
+	meinfo, err := meminfo.NewMeminfo()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	used := (meinfo.MemTotal - meinfo.MemFree - meinfo.Buffers - meinfo.Cached)
+
 	return ram{
-		total:     uint64(info.Totalram),
-		free:      uint64(info.Freeram),
-		available: uint64(mem.Available),
+		total:     meinfo.MemTotal * 1024,
+		used:      used * 1024,
+		free:      meinfo.MemFree * 1024,
+		available: meinfo.MemAvailable * 1024,
 	}
 }
 
 func newSwap() swap {
-	var info unix.Sysinfo_t
-	unix.Sysinfo(&info)
+	meinfo, err := meminfo.NewMeminfo()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return swap{
-		total: uint64(info.Totalswap),
-		free:  uint64(info.Freeswap),
+		total: meinfo.SwapTotal * 1024,
+		free:  meinfo.SwapFree * 1024,
 	}
 }
 
@@ -65,15 +68,17 @@ func formatedRAM() string {
 	ram := newRAM()
 
 	legend := fmt.Sprintf(
-		"%20s %11s %11s",
+		"%20s %11s %11s %11s",
 		"Total",
+		"Used",
 		"Free",
 		"Available",
 	)
 
 	values := fmt.Sprintf(
-		"Mem: %15s %20s %20s",
+		"Mem: %15s %20s %20s %20s",
 		formatUncolored(ram.total),
+		formatColored(0, ram.total, ram.used),
 		formatColored(ram.total, 0, ram.free),
 		formatColored(0, ram.total, ram.available),
 	)
@@ -85,15 +90,17 @@ func formatedSwap() string {
 	swap := newSwap()
 
 	legend := fmt.Sprintf(
-		"%20s %11s",
-		"Used",
+		"%20s %11s %11s",
 		"Total",
+		"Used",
+		"Free",
 	)
 
 	values := fmt.Sprintf(
-		"Swap: %23s %11s",
-		formatColored(0, swap.total, swap.total-swap.free),
+		"Swap: %14s %20s %20s",
 		formatUncolored(swap.total),
+		formatColored(0, swap.total, swap.total-swap.free),
+		formatColored(swap.total, 0, swap.free),
 	)
 
 	return fmt.Sprintf("%s\n%s", legend, values)
