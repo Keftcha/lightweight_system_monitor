@@ -4,6 +4,13 @@ import (
 	"testing"
 )
 
+func init() { testing.Init() }
+
+var _ = func() bool {
+	testing.Init()
+	return true
+}()
+
 func TestDefineColorWithInterval0to5(t *testing.T) {
 	got := defineColor(0, 5, 0)
 	if got != "\033[95m" {
